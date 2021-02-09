@@ -24,7 +24,21 @@
     @endif
     
     {{-- タスク登録ページへのリンク --}}
-    {!! link_to_route('tasks.create', '新規タスクの登録', [], ['class' => 'btn btn-primary']) !!}
+    {!! link_to_route('tasks.create', '新規タスクを登録', [], ['class' => 'btn btn-primary']) !!}
+    
+    <br>
+    <br>
 
+    @foreach ($tasks as $task)
+        <table class="table">
+            <tbody>
+                <tr>
+                    {{-- タスク詳細ページへのリンク --}}
+                    <td>{!! link_to_route('tasks.show', $task->id, ['task' => $task->id]) !!}</td>
+                    <td>{{ $task->content }}</td>
+                </tr>
+            </tbody>
+        </table>
+    @endforeach
 
 @endsection

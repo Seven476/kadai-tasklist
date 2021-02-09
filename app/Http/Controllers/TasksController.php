@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Task;
 
 class TasksController extends Controller
 {
@@ -31,7 +32,7 @@ class TasksController extends Controller
     {
         $task = new Task;
 
-        // タスク唐登録ビューを表示
+        // タスク登録ビューを表示
         return view('tasks.create', [
             'task' => $task,
         ]);
