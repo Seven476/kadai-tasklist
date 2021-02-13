@@ -8,14 +8,14 @@
     </head>
 
     <body>
-
-        {{-- エラーメッセージ --}}
-        @include('commons.error_messages')
         
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
     
         <div class="container">
+            {{-- エラーメッセージ --}}
+            @include('commons.error_messages')
+        
             @yield('content')
         </div>
 
