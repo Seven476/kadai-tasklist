@@ -9,6 +9,9 @@
 
     <body>
 
+        {{-- エラーメッセージ --}}
+        @include('commons.error_messages')
+        
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
     
