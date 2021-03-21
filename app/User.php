@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Task;
 
 class User extends Authenticatable
 {
@@ -37,12 +38,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-       /**
+    /**
      * このユーザが所有する投稿。
      */
     public function tasks()
     {
-        return $this->hasMany(Tasklist::class);
+        return $this->hasMany(Task::class);
     }
     
         /**

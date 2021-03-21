@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->string('status');
             $table->string('content');
             $table->timestamps();
 
@@ -33,9 +34,10 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
-        
         $table->dropForeign('tasks_user_id_foreign');
         
+        Schema::dropIfExists('tasks');
+
     }
+    
 }
