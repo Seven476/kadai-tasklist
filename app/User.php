@@ -36,4 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+       /**
+     * このユーザが所有する投稿。
+     */
+    public function tasklists()
+    {
+        return $this->hasMany(Tasklist::class);
+    }
+    
+        /**
+     * このユーザに関係するモデルの件数をロードする。
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('tasklists');
+    }
+
 }
