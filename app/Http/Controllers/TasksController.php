@@ -15,12 +15,11 @@ class TasksController extends Controller
             // 認証済みユーザを取得
             $user = \Auth::user();
             // ユーザの投稿の一覧を作成日時の降順で取得
-            // （後のChapterで他ユーザの投稿も取得するように変更しますが、現時点ではこのユーザの投稿のみ取得します）
-            $tasklists = $user->tasklists()->orderBy('created_at', 'desc')->paginate(10);
+            $tasks = $user->tasks()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
-                'tasklists' => $tasklists,
+                'tasks' => $tasks,
             ];
         }
 
@@ -28,8 +27,25 @@ class TasksController extends Controller
         return view('welcome', $data);
     }
 
+    public function store(Request $request)
+    {
+        // バリデーション
+        $request->validate([
+            'status' => 'required|max:10', 
+            'content' => 'required|max:140', 
+        ]);
+        
+        // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
+        $request->user()->tasks()->create([
+            'status' => $request->status,
+            'content' => $request->content,
+        ]);
 
-    public function destroy($id)
+        // 前のURLへリダイレクトさせる
+        return back();
+    }
+    
+        public function destroy($id)
     {
         // idの値で投稿を検索して取得
         $task = \App\Tasklist::findOrFail($id);

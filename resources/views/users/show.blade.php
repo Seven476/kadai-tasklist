@@ -25,10 +25,10 @@
             </ul>
             @if (Auth::id() == $user->id)
                 {{-- 投稿フォーム --}}
-                @include('tasklists.form')
+                @include('tasklist.form')
             @endif
             {{-- 投稿一覧 --}}
-            @include('tasklists.tasklists')
+            @include('tasklist.tasklist')
         </div>
     </div>
 @endsection

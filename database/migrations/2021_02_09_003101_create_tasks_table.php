@@ -37,7 +37,5 @@ class CreateTasksTable extends Migration
         
         $table->dropForeign('tasks_user_id_foreign');
         
-        ß$table->unsignedBigInteger('user_id');
-        
     }
 }

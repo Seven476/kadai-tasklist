@@ -40,7 +40,7 @@ class User extends Authenticatable
        /**
      * このユーザが所有する投稿。
      */
-    public function tasklists()
+    public function tasks()
     {
         return $this->hasMany(Tasklist::class);
     }
@@ -50,7 +50,7 @@ class User extends Authenticatable
      */
     public function loadRelationshipCounts()
     {
-        $this->loadCount('tasklists');
+        $this->loadCount('tasks');
     }
 
 }
