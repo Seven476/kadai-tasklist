@@ -19,6 +19,7 @@ class TasksController extends Controller
 
             $data = [
                 'user' => $user,
+                'status' => $status,
                 'tasks' => $tasks,
             ];
         }

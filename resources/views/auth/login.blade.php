@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @csrf
+    
     <div class="text-center">
         <h1>Log in</h1>
     </div>
