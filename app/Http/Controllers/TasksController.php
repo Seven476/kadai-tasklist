@@ -25,7 +25,17 @@ class TasksController extends Controller
         }
 
         // Welcomeビューでそれらを表示
-        return view('welcome', $data);
+        return view('tasks.index', $data);
+    }
+    
+    public function create()
+    {
+        $task = new Task;
+
+        // タスク登録ビューを表示
+        return view('tasks.create', [
+            'task' => $task,
+        ]);
     }
     
     public function store(Request $request)
@@ -51,9 +61,11 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
 
         // タスク詳細ビューでそれを表示
-        return view('tasks.show', [
-            'task' => $task,
-        ]);
+        if (\Auth::id() === $task->user_id) {
+            return view('tasks.show', [
+                'task' => $task,
+            ]);
+        }
     }
     
     public function edit($id)

@@ -19,7 +19,7 @@
                 <li class="nav-item">
                     <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
                         TimeLine
-                        <span class="badge badge-secondary">{{ $user->microposts_count }}</span>
+                        <span class="badge badge-secondary">{{ $user->tasklist_count }}</span>
                     </a>
                 </li>
             </ul>
