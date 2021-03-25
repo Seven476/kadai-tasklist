@@ -25,7 +25,7 @@
             </ul>
             @if (Auth::id() == $user->id)
                 {{-- 投稿フォーム --}}
-                @include('tasks.form')
+                @include('tasks.create')
             @endif
             {{-- 投稿一覧 --}}
             @include('tasks.tasklist')

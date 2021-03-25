@@ -16,7 +16,7 @@
             </aside>
             <div class="col-sm-8">
                  {{-- 投稿フォーム --}}
-                @include('tasks.form')
+                @include('tasks.create')
                 {{-- 投稿一覧 --}}
                 @include('tasks.tasklist')
             </div>

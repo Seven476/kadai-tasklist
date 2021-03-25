@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 {!! Form::open(['route' => 'tasks.store']) !!}
     <div class="form-group">
         {!! Form::textarea('status', old('status'), ['class' => 'form-control', 'rows' => '1']) !!}
@@ -5,3 +9,5 @@
         {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
     </div>
 {!! Form::close() !!}
+
+@endsection
