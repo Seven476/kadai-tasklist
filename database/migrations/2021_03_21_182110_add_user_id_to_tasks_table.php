@@ -10,7 +10,7 @@ class AddUserIdToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->string('user_id');
+            $table->int('user_id');
         });
     }
 

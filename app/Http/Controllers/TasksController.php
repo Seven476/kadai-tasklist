@@ -30,7 +30,7 @@ class TasksController extends Controller
         }
 
         // Welcomeビューでそれらを表示
-        return view('tasks.index', $data);
+        return view('welcome', $data);
     }
     
     public function create()
@@ -57,7 +57,7 @@ class TasksController extends Controller
         ]);
 
         // 前のURLへリダイレクトさせる
-        return back();
+        return redirect('/');
     }
     
     public function show($id)
@@ -66,7 +66,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
 
         // タスク詳細ビューでそれを表示
-        if (\Auth::id() === $task->user_id) {
+        if (\Auth::id() === $task->user_id ) {
             return view('tasks.show', [
                 'task' => $task,
             ]);
@@ -76,7 +76,7 @@ class TasksController extends Controller
     public function edit($id)
     {
         // idの値でタスクを検索して取得
-         $task = Task::findOrFail($id);
+        $task = Task::findOrFail($id);
 
         // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は
         if (\Auth::id() === $task->user_id) {
@@ -86,6 +86,7 @@ class TasksController extends Controller
             ]);
         }
         
+         return redirect('/');
     }
     
     public function update(Request $request, $id)
@@ -107,8 +108,7 @@ class TasksController extends Controller
             $task->save();
         }
         
-        // 前のURLへリダイレクトさせる
-        return back();
+        return redirect('/');
     }
 
     public function destroy($id)
@@ -122,7 +122,7 @@ class TasksController extends Controller
         }
 
         // 前のURLへリダイレクトさせる
-        return back();
+         return redirect('/');
     }
 
 }

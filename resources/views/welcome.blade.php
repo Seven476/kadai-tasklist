@@ -2,25 +2,7 @@
 
 @section('content')
     @if (Auth::check())
-        <div class="row">
-            <aside class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">{{ Auth::user()->name }}</h3>
-                    </div>
-                    <div class="card-body">
-                        {{-- 認証済みユーザのメールアドレスをもとにGravatarを取得して表示 --}}
-                        <img class="rounded img-fluid" src="{{ Gravatar::get(Auth::user()->email, ['size' => 500]) }}" alt="">
-                    </div>
-                </div>
-            </aside>
-            <div class="col-sm-8">
-                {{-- タスク一覧ページへのリンク --}}
-                {!! link_to_route('tasks.index', 'タスク一覧', ['user' => Auth::id(), 'class' => 'btn btn-primary']) !!}
-                {{-- タスク登録ページへのリンク --}}
-                {!! link_to_route('tasks.create', '新規タスクの登録', [], ['class' => 'btn btn-primary']) !!}
-            </div>
-        </div>
+                @include('tasks.index')
     @else
         <div class="center jumbotron">
             <div class="text-center">
