@@ -15,12 +15,11 @@
                 </div>
             </aside>
             <div class="col-sm-8">
-                 {{-- 投稿フォーム --}}
-                @include('tasks.create')
-                {{-- 投稿一覧 --}}
-                @include('tasks.tasklist')
+                {{-- タスク一覧ページへのリンク --}}
+                {!! link_to_route('tasks.index', 'タスク一覧', ['user' => Auth::id(), 'class' => 'btn btn-primary']) !!}
+                {{-- タスク登録ページへのリンク --}}
+                {!! link_to_route('tasks.create', '新規タスクの登録', [], ['class' => 'btn btn-primary']) !!}
             </div>
-               <div class="col-sm-8">
         </div>
     @else
         <div class="center jumbotron">
@@ -31,4 +30,5 @@
             </div>
         </div>
     @endif
+
 @endsection
