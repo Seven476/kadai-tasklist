@@ -2,7 +2,7 @@
 
 @section('content')
     @if (Auth::check())
-                @include('tasks.index')
+        @include('tasks.index')
     @else
         <div class="center jumbotron">
             <div class="text-center">
