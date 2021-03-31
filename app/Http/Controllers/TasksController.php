@@ -30,7 +30,7 @@ class TasksController extends Controller
         }
 
         // Welcomeビューでそれらを表示
-        return view('welcome', $data);
+        return view('tasks.index', $data);
     }
     
     public function create()
