@@ -29,7 +29,7 @@ class TasksController extends Controller
             ];
         }
 
-        // Welcomeビューでそれらを表示
+        // indexで表示
         return view('tasks.index', $data);
     }
     
@@ -56,7 +56,7 @@ class TasksController extends Controller
             'content' => $request->content,
         ]);
 
-        // 前のURLへリダイレクトさせる
+        // indexへリダイレクトさせる
         return redirect('/');
     }
     
@@ -66,7 +66,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
 
         // タスク詳細ビューでそれを表示
-        if (\Auth::id() === $task->user_id ) {
+        if (\Auth::id() === $task->user_id) {
             return view('tasks.show', [
                 'task' => $task,
             ]);
@@ -121,7 +121,7 @@ class TasksController extends Controller
             $task->delete();
         }
 
-        // 前のURLへリダイレクトさせる
+        // indexへリダイレクトさせる
          return redirect('/');
     }
 
