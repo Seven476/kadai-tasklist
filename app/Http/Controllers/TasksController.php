@@ -71,6 +71,9 @@ class TasksController extends Controller
                 'task' => $task,
             ]);
         }
+        
+        // indexへリダイレクトさせる
+        return redirect('/');
     }
     
     public function edit($id)
